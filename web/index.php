@@ -29,6 +29,11 @@ $app->get('/provaparametro', function() use($app) {
   return str_repeat('Hello', getenv('TIMES'));
 });
 
+$app->get('/salutami', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return str_repeat('Hello. <br>', getenv('TIMES'));
+});
+
 // aggiunta
 
 $app->get('/cowsay', function() use($app) {
