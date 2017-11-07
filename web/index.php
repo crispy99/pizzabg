@@ -26,7 +26,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/provaparametro', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return str_repeat('Hello', getenv('TIMES'));
+  return str_repeat('Ciaone', getenv('TIMES'));
 });
 
 $app->get('/salutami', function() use($app) {
