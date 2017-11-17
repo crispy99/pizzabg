@@ -3,8 +3,7 @@
 	$scadenza=time()+(60*60*24*7);
 	if(!isset($_COOKIE["contatore"]))
 	{
-		print("Benvenuto! Questa è la prima volta che entri in questo sito!");
-		$valore=1;
+		print("Questa e' la prima volta che accedi alla pagina, COMPLIMENTONI!!");
 		setcookie($nome, $valore, $scadenza);
 	}
 	else
