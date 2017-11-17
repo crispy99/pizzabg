@@ -1,13 +1,13 @@
 <?php
 	if(!isset($Count['Cookie_accessi']))
 	{
-		$Count['Cookie_accessi']++;
-		setcookie ('Cookie_accessi', $Count['Cookie_accessi']);
+		$valore=1;
+		setcookie ('Cookie_accessi', $valore);
 	}
 	else
 	{
-		$Count['Cookie_accessi']++;
-		setcookie ('Cookie_accessi', $Count['Cookie_accessi']);
+		$valore=++$Count['Cookie_accessi'];
+		setcookie ('Cookie_accessi', $valore);
 	}
 ?>
 
