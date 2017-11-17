@@ -1,15 +1,6 @@
 <?php
-	
-	if(!isset($Count['Cookie_accessi']))
-	{
-		$Count_value=1;
-		setcookie ('Cookie_accessi', $Count_value);
-	}	
-	else
-	{
-		$Count_value = ++$Count['Cookie_accessi'];
-		setcookie ('Cookie_accessi', $Count_value);
-	}
+	$Count['Cookie_accessi']++;
+	setcookie ('Cookie_accessi', $Count['Cookie_accessi']);
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +10,13 @@
 	</head>
 	<body>
 		<?php
-			if ($Count_value == 1)
+			if ($Count['Cookie_accessi'] == 1)
 			{
-				echo "Numero di accessi: " . $Count['Cookie_accessi'];
+				echo "Numero di accessi: " . $Count['Cookie_accessi'] . "\n";
 				echo "Prima volta per te, BRAVOH!!!";
 			}
 			else
-				echo "Sei acceduto a questa pagina: ". $Count['Cookie_accessi'] . "volte."; 
+				echo "Sei l'utente numero ". $Count['Cookie_accessi'] . " che ha fatto l'accesso a questo sito."; 
 		?>		
 	</body>
 </html>
