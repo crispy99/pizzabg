@@ -5,14 +5,15 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-	<title>PHP Script using Cookies</title>
-</head>
+	<head>
+		<title>PHP Script using Cookies</title>
+	</head>
 	<body>
-		<?if ($Count_visite == 1): ?>
-			Prima volta per te, BRAVOH!!!
-		<?else:?> 
-			Sei acceduto a questa pagina: <?= $Count['Cookie_accessi'] ?> volte. 
-		<?endif;?>
+		<?php
+			if ($Count_visite == 1)
+				echo "Prima volta per te, BRAVOH!!!";
+			else
+				echo "Sei acceduto a questa pagina: ". $Count['Cookie_accessi']. "volte."; 
+		?>		
 	</body>
 </html>
