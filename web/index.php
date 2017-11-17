@@ -1,44 +1,20 @@
 <?php
+	$strValue = "Primo accesso, BRAVOH!";
+	setcookie ('Cookie', $strValue);
+	setcookie ('Cookie_accessi', isset($Count['Cookie_accessi']) ? $Count['Cookie_accessi']++ : 1);
+	$Count_visite = $Count['Cookie_accessi'];
+?>
 
-require('../vendor/autoload.php');
-
-$app = new Silex\Application();
-$app['debug'] = true;
-
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
-
-// Register view rendering
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
-));
-
-// Our web handlers
-
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
-});
-
-// aggiunta parametro
-
-$app->get('/provaparametro', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return str_repeat('Ciaone', getenv('TIMES'));
-});
-
-$app->get('/salutami', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return str_repeat('Hello. <br>', getenv('TIMES'));
-});
-
-// aggiunta
-
-$app->get('/cowsay', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
-  return "<pre>".\Cowsayphp\Cow::say("La mucca fa muu ma una fa muumuu")."</pre>";
-});
-
-$app->run();
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PHP Script using Cookies</title>
+</head>
+	<body>
+		<?if ($Count_visite == 1): ?>
+			<?= $Cookie ?>
+		<?else:?> 
+			Sei acceduto a questa pagina: <?= $Count['Cookie_accessi'] ?> volte. 
+		<?endif;?>
+	</body>
+</html>
