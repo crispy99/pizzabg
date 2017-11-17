@@ -1,13 +1,17 @@
 <?php
-	if(!isset($Count['Cookie_accessi']))
+	$nome="contatore";
+	$scadenza=time()+(60*60*24*7);
+	if(!isset($_COOKIE["contatore"]))
 	{
-		$Count['Cookie_accessi']=1;
-		setcookie ('Cookie_accessi', $Count['Cookie_accessi']);
+		print("Benvenuto! Questa è la prima volta che entri in questo sito!");
+		$valore=1;
+		setcookie($nome, $valore, $scadenza);
 	}
 	else
 	{
-		$valore=++$Count['Cookie_accessi'];
-		setcookie ('Cookie_accessi', $valore);
+		$valore = ++$_COOKIE["contatore"];
+		print("Hai visitato questo sito ".$_COOKIE["contatore"]." volte");
+		setcookie($nome, $valore, $scadenza);
 	}
 ?>
 
@@ -16,17 +20,6 @@
 	<head>
 		<title>PHP con Cookies</title>
 	</head>
-	<body>
-		<?php
-			if ($Count['Cookie_accessi'] == 1)
-			{
-				echo "Numero di accessi: " . $Count['Cookie_accessi'] . "\n";
-				echo "Prima volta per te, BRAVOH!!!";
-			}
-			else
-			{
-				echo "Sei l'utente numero ". $Count['Cookie_accessi'] . " che ha fatto l'accesso a questo sito."; 
-			}
-		?>		
+	<body>		
 	</body>
 </html>
