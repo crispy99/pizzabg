@@ -4,11 +4,12 @@
 	if(!isset($_COOKIE["contatore"]))
 	{
 		print("Questa e' la prima volta che accedi alla pagina, COMPLIMENTONI!!");
+		$valore=1;
 		setcookie($nome, $valore, $scadenza);
 	}
 	else
 	{
-		$valore = ++$_COOKIE["contatore"];
+		$valore = $_COOKIE["contatore"]+1;
 		print("Hai visitato questo sito ".$_COOKIE["contatore"]." volte");
 		setcookie($nome, $valore, $scadenza);
 	}
