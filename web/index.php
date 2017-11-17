@@ -1,6 +1,15 @@
 <?php
-	setcookie ('Cookie_accessi', isset($Count['Cookie_accessi']) ? ++$Count['Cookie_accessi'] : 1);
-	$Count_visite = $Count['Cookie_accessi'];
+	
+	if(!isset($Count['Cookie_accessi']))
+	{
+		$Count_value=1;
+		setcookie ('Cookie_accessi', $Count_value);
+	}	
+	else
+	{
+		$Count_value = ++$Count['Cookie_accessi'];
+		setcookie ('Cookie_accessi', $Count_value);
+	}
 ?>
 
 <!DOCTYPE html>
