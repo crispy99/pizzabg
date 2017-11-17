@@ -19,10 +19,10 @@
 	</head>
 	<body>
 		<?php
-			if ($Count_visite == 1)
+			if ($Count_value == 1)
 				echo "Prima volta per te, BRAVOH!!!";
 			else
-				echo "Sei acceduto a questa pagina: ". $Count['Cookie_accessi']. "volte."; 
+				echo "Sei acceduto a questa pagina: ". $Count_value. "volte."; 
 		?>		
 	</body>
 </html>
