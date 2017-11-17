@@ -15,12 +15,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>PHP Script using Cookies</title>
+		<title>PHP con Cookies</title>
 	</head>
 	<body>
 		<?php
 			if ($Count_value == 1)
+			{
+				echo "Numero di accessi: " . $Count['Cookie_accessi'];
 				echo "Prima volta per te, BRAVOH!!!";
+			}
 			else
 				echo "Sei acceduto a questa pagina: ". $Count['Cookie_accessi'] . "volte."; 
 		?>		
