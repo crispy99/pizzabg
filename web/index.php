@@ -1,6 +1,4 @@
 <?php
-	$strValue = "Primo accesso, BRAVOH!";
-	setcookie ('Cookie', $strValue);
 	setcookie ('Cookie_accessi', isset($Count['Cookie_accessi']) ? $Count['Cookie_accessi']++ : 1);
 	$Count_visite = $Count['Cookie_accessi'];
 ?>
@@ -12,7 +10,7 @@
 </head>
 	<body>
 		<?if ($Count_visite == 1): ?>
-			<?= $Cookie ?>
+			Prima volta per te, BRAVOH!!!
 		<?else:?> 
 			Sei acceduto a questa pagina: <?= $Count['Cookie_accessi'] ?> volte. 
 		<?endif;?>
