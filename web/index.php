@@ -1,8 +1,8 @@
 <?php
 	if(!isset($Count['Cookie_accessi']))
 	{
-		$valore=1;
-		setcookie ('Cookie_accessi', $valore);
+		$Count['Cookie_accessi']=1;
+		setcookie ('Cookie_accessi', $Count['Cookie_accessi']);
 	}
 	else
 	{
