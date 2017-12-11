@@ -101,7 +101,7 @@
 		echo "</table><br/>";
 		
 		echo "<form id='forma' method='post' onsubmit='return controllo();'>";
-		echo "Numero elementi [1-50]: <input type='text' value='$Num' name='Num' id='Num'/><br/><br/>";
+		echo "Numero righe [1-50]: <input type='text' value='$Num' name='Num' id='Num'/><br/><br/>";
 		echo "<input type='submit' class=but value='Aggiorna tabella'/>";
 		echo "</form>";
 		
