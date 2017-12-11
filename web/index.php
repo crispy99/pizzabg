@@ -77,7 +77,10 @@
 		
 		echo "<div align='center'>";
 		
-		echo "<h1>Elenco di $Num pizzerie di Bergamo</h1><br/>";
+		if($Num>1)
+			echo "<h1>Elenco di $Num pizzerie di Bergamo</h1><br/>";
+		else
+			echo "<h1>Elenco di $Num pizzeria di Bergamo</h1><br/>";
 		
 		echo "<table id='table'>";
 			echo "<tr>";
