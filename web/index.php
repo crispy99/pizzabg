@@ -8,7 +8,7 @@
 			var esito=false;
 			var verifica=/^\d{1,2}$/
 			
-			if(numero!=""&&numero.match(verifica)&&parseInt(numero)<50)
+			if(numero!=""&&numero.match(verifica)&&parseInt(numero)<51)
 				esito=true;
 			
 			return esito;
