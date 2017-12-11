@@ -1,48 +1,44 @@
 <html>
 	<head>
-		<title>Ricerca</title>
-		<script>
-			function controllo_campi()
-			{
-				var valore=document.getElementById("lim").value;
-				var esito=false;
-				var verifica=/^\d{1,2}$/
-				if(document.getElementById("lim").value!=""&&document.getElementById("cit").value!=""&&document.getElementById("que").value!="")
-					if(valore.match(verifica)&&parseInt(valore)<51)
-						esito=true;
-				return esito;
-			}
-		</script>
+		<title>Pizzerie BG</title>
 	</head>
+	<style>
+		#table {
+		font-family: Arial;
+		border-collapse: collapse;
+		width: 75%;
+		}
+
+		#table td, #table th {
+			border: 2px solid lightgrey;
+			padding: 8px;
+		}
+
+		#table th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: center;
+			background-color: green;
+			color: white;
+		}
+		
+		h1 {
+			font-family:Arial;
+			font-size:24px;
+		}
+	</style>
 	<body>
 		<?php
-			if(isset($_POST["lim"]))
-			{
-				$lim=$_POST["lim"];
-			}
-			else
-			{
-				$lim=10;
-			}
-			if(isset($_POST["cit"]))
-			{
-				$cit=$_POST["cit"];
-			}
-			else
-			{
+			if(!isset($_POST["lim"]))
+				$lim=50;
+			
+			if(!isset($_POST["cit"]))
 				$cit="bergamo";
-			}
-			if(isset($_POST["que"]))
-			{
-				$que=$_POST["que"];
-			}
-			else
-			{
+			
+			if(!isset($_POST["que"]))
 				$que="pizzeria";
-			}
-			# Questo script chiama un'API e la inserisce in una tabella
-			# Indirizzo dell'API da richiedere
-			$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X&near=$cit";
+			
+			$indirizzo="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=WTSXHM2Z0E411CZIDXQH00XJRAVYAQ4CNUDYMJ21Y32XY5QC&client_secret=GH0NSWX5YRUQ0FYI1DD1IC3JNVEBCLTMYJE5G11ADQD1YSTF&near=$cit";
 			# Codice di utilizzo di cURL
 			# Chiama l'API e la immagazzina in $json
 			$ch = curl_init() or die(curl_error());
@@ -51,10 +47,13 @@
 			$json=curl_exec($ch) or die(curl_error());
 			# Decodifico la stringa json e la salvo nella variabile $data
 			$data = json_decode($json);
-			# Stampa della tabella delle pizzerie.
+			echo "<div align='center'>";
+			
+			echo "<h1>Elenco pizzerie di Bergamo</h1><br/>";
+			
 			echo "<table>";
 				echo "<tr>";
-					echo "<th>NOME</th>";
+					echo "<th>PIZZERIA</th>";
 					echo "<th>LATITUDINE</th>";
 					echo "<th>LONGITUDINE</th>";
 				echo "</tr>";
@@ -73,6 +72,8 @@
 					echo "</tr>";
 				}
 			echo "</table>";
+			
+			echo "</div>";
 			# Stampa di eventuali errori
 			echo curl_error($ch);
 			curl_close($ch);
