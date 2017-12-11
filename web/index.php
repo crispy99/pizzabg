@@ -6,9 +6,9 @@
 		{
 			var numero=document.getElementById("Num").value;
 			var esito=false;
-			var verifica=/^\d{1,3}$/
+			var verifica=/^\d{1,2}$/
 			
-			if(numero!=""&&numero.match(verifica)&&(parseInt(numero)>1&&parseInt(numero)<100)
+			if(numero!=""&&numero.match(verifica)&&parseInt(numero)<50)
 				esito=true;
 			
 			return esito;
@@ -63,7 +63,7 @@
 		if(isset($_POST["Num"]))
 			$Num=$_POST["Num"];
 		else
-			$Num=30;
+			$Num=20;
 		
 		$indirizzo="https://api.foursquare.com/v2/venues/search?v=20161016&query=pizzeria&limit=$Num&near=bergamo&client_id=WTSXHM2Z0E411CZIDXQH00XJRAVYAQ4CNUDYMJ21Y32XY5QC&client_secret=GH0NSWX5YRUQ0FYI1DD1IC3JNVEBCLTMYJE5G11ADQD1YSTF";
 		
@@ -98,7 +98,7 @@
 		echo "</table><br/>";
 		
 		echo "<form id='forma' method='post' onsubmit='return controllo();'>";
-		echo "Numero elementi [1-100]: <input type='text' value='$Num' name='Num' id='Num'/><br/>";
+		echo "Numero elementi [1-50]: <input type='text' value='$Num' name='Num' id='Num'/><br/><br/>";
 		echo "<input type='submit' class=but value='Aggiorna tabella'/>";
 		echo "</form>";
 		
