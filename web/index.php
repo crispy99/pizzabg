@@ -51,7 +51,7 @@
 					echo "<th>LATITUDINE</th>";
 					echo "<th>LONGITUDINE</th>";
 				echo "</tr>";
-				for($i=0; $i<$max; $i++)
+				for($i=0; $i<50; $i++)
 				{
 					echo "<tr>";
 						echo "<td>".($i+1)."</td>";
@@ -72,20 +72,6 @@
 			# Stampa di eventuali errori
 			echo curl_error($ch);
 			curl_close($ch);
-			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
-			echo "<table>";
-			echo "<tr>";
-			echo " <td>Numero elementi (1-50): </td><td><input type='text' value='$lim' name='lim'id='lim' /></td>";
-			echo "</tr>";
-			echo "<tr>";
-			echo " <td>Citta: </td><td><input type='text' value='$cit' name='cit' id='cit' /></td>";
-			echo "</tr>";
-			echo "<tr>";
-			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
-			echo "</tr>";
-			echo "</table>";
-			echo " <input type='submit' value='Aggiorna tabella' class='btn'/>";
-			echo "</form>";
 		?>
 	</body>
 </html>
