@@ -23,7 +23,7 @@
 
 		#table td, #table th {
 			border: 2px solid lightgrey;
-			background-color: light-blue;
+			bgcolor: light-blue;
 			padding: 8px;
 		}
 
