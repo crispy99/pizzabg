@@ -29,37 +29,32 @@
 	</style>
 	<body>
 		<?php
-			if(!isset($_POST["lim"]))
-				$lim=50;
 			
-			if(!isset($_POST["cit"]))
-				$cit="bergamo";
-			
-			if(!isset($_POST["que"]))
-				$que="pizzeria";
-			
-			$indirizzo="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=WTSXHM2Z0E411CZIDXQH00XJRAVYAQ4CNUDYMJ21Y32XY5QC&client_secret=GH0NSWX5YRUQ0FYI1DD1IC3JNVEBCLTMYJE5G11ADQD1YSTF&near=$cit";
+			$indirizzo="https://api.foursquare.com/v2/venues/search?v=20161016&query=pizzeria&limit=50&near=bergamo&client_id=WTSXHM2Z0E411CZIDXQH00XJRAVYAQ4CNUDYMJ21Y32XY5QC&client_secret=GH0NSWX5YRUQ0FYI1DD1IC3JNVEBCLTMYJE5G11ADQD1YSTF";
 			# Codice di utilizzo di cURL
 			# Chiama l'API e la immagazzina in $json
 			$ch = curl_init() or die(curl_error());
-			curl_setopt($ch, CURLOPT_URL,$indirizzo_pagina);
+			curl_setopt($ch, CURLOPT_URL,$indirizzo);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$json=curl_exec($ch) or die(curl_error());
 			# Decodifico la stringa json e la salvo nella variabile $data
 			$data = json_decode($json);
+			
 			echo "<div align='center'>";
 			
 			echo "<h1>Elenco pizzerie di Bergamo</h1><br/>";
 			
-			echo "<table>";
+			echo "<table id='table'>";
 				echo "<tr>";
+					echo "<th>Nr.</th>";
 					echo "<th>PIZZERIA</th>";
 					echo "<th>LATITUDINE</th>";
 					echo "<th>LONGITUDINE</th>";
 				echo "</tr>";
-				for($i=0; $i<$lim; $i++)
+				for($i=0; $i<$max; $i++)
 				{
 					echo "<tr>";
+						echo "<td>".($i+1)."</td>";
 						echo "<td>";
 						echo $data->response->venues[$i]->name;
 						echo "</td>";
